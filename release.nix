@@ -1,10 +1,10 @@
 { nixpkgs ? (import ./nixpkgs.nix), ... }:
 let
   pkgs = import nixpkgs { config = {}; };
-  git-host-tools = pkgs.callPackage ./derivation.nix {};
+  gitout = pkgs.callPackage ./derivation.nix {};
 in {
-  test = pkgs.runCommandNoCC "git-host-tools-test" {} ''
+  test = pkgs.runCommandNoCC "gitout-test" {} ''
     mkdir -p $out
-    : ${git-host-tools}
+    : ${gitout}
   '';
 }

@@ -1,7 +1,7 @@
 { stdenv, fetchFromGitHub, gerbil, ... }:
 
 stdenv.mkDerivation rec {
-  pname = "git-host-tools";
+  pname = "gitout";
   version = "0.1.0";
 
   src = ./.;
@@ -16,7 +16,7 @@ stdenv.mkDerivation rec {
 
   meta = with stdenv.lib; {
     description = "TODO: fill me in";
-    homepage = https://github.com/eraserhd/git-host-tools;
+    homepage = https://github.com/eraserhd/gitout;
     license = licenses.publicDomain;
     platforms = platforms.all;
     maintainers = [ maintainers.eraserhd ];
