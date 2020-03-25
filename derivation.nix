@@ -1,10 +1,18 @@
-{ stdenv, fetchFromGitHub, ... }:
+{ stdenv, fetchFromGitHub, gerbil, ... }:
 
 stdenv.mkDerivation rec {
   pname = "git-host-tools";
   version = "0.1.0";
 
   src = ./.;
+
+  buildInputs = [ gerbil ];
+
+  installPhase = ''
+    mkdir -p $out/bin
+    GERBIL_PATH=$out gxi build.ss
+    rm -rf $out/lib
+  '';
 
   meta = with stdenv.lib; {
     description = "TODO: fill me in";

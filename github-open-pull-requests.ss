@@ -1,0 +1,46 @@
+(import :std/net/request
+        :std/sugar
+        :std/text/json
+        :gerbil/gambit/hash)
+(export main)
+
+(define-syntax ->
+  (syntax-rules ()
+    ((_ expr)                          expr)
+    ((_ expr (head args ...) rest ...) (-> (head expr args ...) rest ...))
+    ((_ expr symbol rest ...)          (-> (symbol expr) rest ...))))
+
+(define query
+  "query {
+     user(login: \"eraserhd\") {
+       pullRequests(first: 100, states: OPEN) {
+         nodes {
+           url
+           title
+         }
+       }
+     }
+   }")
+
+(define (post-data)
+  (let ((table (make-table)))
+    (table-set! table 'query query)
+    (json-object->string table)))
+
+(define (main)
+  (let* ((request (http-post
+                   "https://api.github.com/graphql"
+                   headers: `(("Authorization" . ,(string-append "bearer " (getenv "GITHUB_TOKEN"))))
+                   data: (post-data)))
+         (nodes (-> request
+                    request-json
+                    (table-ref 'data)
+                    (table-ref 'user)
+                    (table-ref 'pullRequests)
+                    (table-ref 'nodes))))
+    (for-each (lambda (node)
+                (display (table-ref node 'url))
+                (display " ")
+                (display (table-ref node 'title))
+                (newline))
+              nodes)))
