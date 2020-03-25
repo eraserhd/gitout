@@ -11,7 +11,6 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p $out/bin
     GERBIL_PATH=$out gxi build.ss
-    rm -rf $out/lib
   '';
 
   meta = with stdenv.lib; {
