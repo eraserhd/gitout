@@ -39,9 +39,7 @@
     }"))
 
 (define (post-data username)
-  (let ((table (make-table)))
-    (table-set! table 'query (query username))
-    (json-object->string table)))
+  (json-object->string (hash (query (query username)))))
 
 (define (main)
   (let-hash (hub-config)
