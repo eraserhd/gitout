@@ -1,15 +1,10 @@
-(import :std/net/request
+(import :clojerbil/core
+        :std/net/request
         :std/sugar
         :std/text/json
         :std/text/yaml
         :gerbil/gambit/hash)
 (export main)
-
-(define-syntax ->
-  (syntax-rules ()
-    ((_ expr)                          expr)
-    ((_ expr (head args ...) rest ...) (-> (head expr args ...) rest ...))
-    ((_ expr symbol rest ...)          (-> (symbol expr) rest ...))))
 
 (define (hub-config-filename)
   (string-append (getenv "XDG_CONFIG_HOME" "~/.config") "/hub"))

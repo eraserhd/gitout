@@ -1,1 +1,2 @@
-(package: gitout)
+(package: gitout
+ depend: ("github.com/eraserhd/clojerbil"))

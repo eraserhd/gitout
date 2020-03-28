@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, gerbil, makeWrapper, ... }:
+{ stdenv, fetchFromGitHub, gerbil, makeWrapper, clojerbil, ... }:
 
 stdenv.mkDerivation rec {
   pname = "gitout";
@@ -6,11 +6,12 @@ stdenv.mkDerivation rec {
 
   src = ./.;
 
-  buildInputs = [ gerbil makeWrapper ];
+  buildInputs = [ gerbil makeWrapper clojerbil ];
 
   installPhase = ''
+    find ${clojerbil}
     mkdir -p $out/bin
-    GERBIL_PATH=$out gxi build.ss
+    GERBIL_PATH=$out GERBIL_LOADPATH=${clojerbil}/lib gxi build.ss
     for exe in "$out/bin/"*; do
       wrapProgram "$exe" --prefix GERBIL_LOADPATH : "$out/lib"
     done
