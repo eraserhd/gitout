@@ -3,4 +3,4 @@
 (import :std/build-script)
 
 (defbuild-script
-  '("github-open-pull-requests" (exe: "github-open-pull-requests")))
+  '((static-exe: "github-open-pull-requests" "-ld-options" "-lz -lyaml")))
