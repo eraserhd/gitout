@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, gerbil, libyaml, zlib, clojerbil, ... }:
+{ stdenv, fetchFromGitHub, gerbil, gambit, libyaml, zlib, clojerbil, ... }:
 
 stdenv.mkDerivation rec {
   pname = "gitout";
@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
 
   src = ./.;
 
-  buildInputs = [ gerbil clojerbil libyaml zlib ];
+  buildInputs = [ gerbil gambit clojerbil libyaml zlib ];
 
   installPhase = ''
     mkdir -p $out/bin
