@@ -1,9 +1,11 @@
 self: super: {
-  gitout = super.callPackage ./derivation.nix {};
-  clojerbil = super.callPackage "${super.fetchFromGitHub {
+  gerbilPackages = {
+    clojerbil = super.callPackage "${super.fetchFromGitHub {
         owner = "eraserhd";
         repo = "clojerbil";
-        rev = "61a63008a30f97cc0aea7d231d51ca1f523d39f2";
-        sha256 = "060f2wdrgwd75l6ibf9r86szx1d1yanyjyq73lxycaj2rlddph93";
-  }}/derivation.nix" {};
+        rev = "6967dd128f01770a489d8926f61b4b5f47201822";
+        sha256 = "0lv6jlsqhzqswnksyh8cxc4i5ic2ylhpn0x20mqbxrmbg19f5a2l";
+    }}/derivation.nix" {};
+  };
+  gitout = super.callPackage ./derivation.nix {};
 }
