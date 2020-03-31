@@ -2,7 +2,6 @@
         :std/net/request
         :std/sugar
         :std/text/json
-        :gerbil/gambit/hash
         "github")
 (export main)
 
@@ -30,13 +29,13 @@
                      data: (post-data .user)))
            (nodes (-> request
                       request-json
-                      (table-ref 'data)
-                      (table-ref 'user)
-                      (table-ref 'pullRequests)
-                      (table-ref 'nodes))))
+                      (hash-ref 'data)
+                      (hash-ref 'user)
+                      (hash-ref 'pullRequests)
+                      (hash-ref 'nodes))))
       (for-each (lambda (node)
-                  (display (table-ref node 'url))
+                  (display (hash-ref node 'url))
                   (display " ")
-                  (display (table-ref node 'title))
+                  (display (hash-ref node 'title))
                   (newline))
                 nodes))))
