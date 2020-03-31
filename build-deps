@@ -1,1 +1,0 @@
-(("github-open-pull-requests.ss" gitout/github-open-pull-requests gerbil/core gerbil/gambit/hash std/net/request std/sugar std/text/json) ("github-open-pull-requests.ss" gitout/github-open-pull-requests gerbil/core gerbil/gambit/hash std/net/request std/sugar std/text/json))
