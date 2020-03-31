@@ -2,7 +2,6 @@
         :std/net/request
         :std/net/uri
         :std/sugar
-        :gerbil/gambit/hash
         "github")
 (export main)
 
@@ -18,8 +17,8 @@
     (let* ((request (http-get (query-url args)
                               headers: `(("Authorization" . ,(string-append "bearer " .oauth_token)))))
            (data    (request-json request)))
-      (when (table-ref data 'incomplete_results)
+      (when (hash-ref data 'incomplete_results)
         (displayln " ** INCOMPLETE RESULTS **"))
       (for-each (lambda (item)
-                  (displayln (table-ref item 'html_url)))
-                (table-ref data 'items)))))
+                  (displayln (hash-ref item 'html_url)))
+                (hash-ref data 'items)))))

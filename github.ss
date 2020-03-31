@@ -1,6 +1,5 @@
 (import :clojerbil/core
-        :std/text/yaml
-        :gerbil/gambit/hash)
+        :std/text/yaml)
 (export hub-config)
 
 (def (hub-config-filename)
@@ -12,8 +11,8 @@
                         (hash-ref "github.com")
                         car))
         (symbolized (make-hash-table)))
-    (table-for-each (lambda (key value)
-                      (hash-put! symbolized (string->symbol key) value))
-                    config)
+    (hash-for-each (lambda (key value)
+                     (hash-put! symbolized (string->symbol key) value))
+                   config)
     symbolized))
 
