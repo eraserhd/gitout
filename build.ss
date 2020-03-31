@@ -4,4 +4,5 @@
 
 (defbuild-script
   '((static-exe: "git-browse-link")
-    (static-exe: "github-open-pull-requests" "-ld-options" "-lz -lyaml")))
+    (static-exe: "github-open-pull-requests" "-ld-options" "-lz -lyaml")
+    (static-exe: "github-search" "-ld-options" "-lz")))
