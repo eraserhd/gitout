@@ -27,12 +27,7 @@
                      "https://api.github.com/graphql"
                      headers: `(("Authorization" . ,(string-append "bearer " .oauth_token)))
                      data: (post-data .user)))
-           (nodes (-> request
-                      request-json
-                      (hash-ref 'data)
-                      (hash-ref 'user)
-                      (hash-ref 'pullRequests)
-                      (hash-ref 'nodes))))
+           (nodes   (get-in (request-json request) '(data user pullRequests nodes))))
       (for-each (lambda (node)
                   (display (hash-ref node 'url))
                   (display " ")
