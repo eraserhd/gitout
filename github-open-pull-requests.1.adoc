@@ -1,0 +1,17 @@
+= GITHUB-OPEN-PULL-REQUESTS(1)
+:doctype: manpage
+
+== NAME
+github-open-pull-requests - list the user's open pull requests
+
+== SYNOPSIS
+*github-open-pull-requests*
+
+== DESCRIPTION
+
+`github-open-pull-requests` prints the URL and title for every pull-request
+owned by the user.
+
+== EXIT STATUS
+*0*::
+    Success

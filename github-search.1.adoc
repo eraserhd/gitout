@@ -1,0 +1,17 @@
+= GITHUB-SEARCH(1)
+:doctype: manpage
+
+== NAME
+github-search - source code search
+
+== SYNOPSIS
+*github-search* WORD [TERM ...]
+
+== DESCRIPTION
+
+WORD is a literal word to find in source code.  A TERM may be an additional
+WORD or a meta-expresion, for example `in:file` or `language:javascript`.
+
+== EXIT STATUS
+*0*::
+    Success
