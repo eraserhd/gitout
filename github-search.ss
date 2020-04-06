@@ -7,10 +7,7 @@
 
 (def (query-url args)
   (string-append "https://api.github.com/search/code?q="
-                  (-> args
-                    (string-join " ")
-                    (string-append " in:file org:2uinc")
-                    (uri-encode))))
+                 (uri-encode (string-join args " "))))
 
 (def (main . args)
   (let-hash (hub-config)
