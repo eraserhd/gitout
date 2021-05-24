@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, gerbil, gerbilPackages, gambit, libyaml, zlib, asciidoc-full }:
+{ stdenv, lib, fetchFromGitHub, gerbil, gerbilPackages, gambit, libyaml, zlib, asciidoc-full }:
 
 stdenv.mkDerivation rec {
   pname = "gitout";
@@ -25,7 +25,7 @@ stdenv.mkDerivation rec {
     done
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "TODO: fill me in";
     homepage = "https://github.com/eraserhd/gitout";
     license = licenses.publicDomain;
